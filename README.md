@@ -1,31 +1,22 @@
-# Connect `Django` Project to `PostgreSQL`
+# Connect `Django` Project to `MySQL`
 
-## 1 - Install `django`, `psycopg2`
+## 1 - Install `django`, `mysqlclient`
 
 ```bash
 pip install django
 ```
 ```bash
-pip install psycopg2
+pip install mysqlclient
 ```
 
 After installing these requirements, you need to connect Django project to the new database.
 
 ## 2 - Create Database and Insert Data
-  In `postgres` in query tools run this command:
-```sql
-DROP DATABASE IF EXISTS "Ashoori_97149068";
-CREATE DATABASE "Ashoori_97149068"
-    WITH 
-    OWNER = postgres
-    ENCODING = 'UTF8'
-    LC_COLLATE = 'English_United States.1252'
-    LC_CTYPE = 'English_United States.1252'
-    TABLESPACE = pg_default
-    CONNECTION LIMIT = -1;
+We should create the schema in database and then run below command
+```shell
+python manage.py migrate
 ```
-and then with opening `"Query tools"` of `Ashoori_97149068`'s database run all the create and insert query in `+create_and_data.sql"`.
-
+after running this commad all the tables will create inside our database.
 ---
 ## 3 - Set `username` and `password` in **`setting.py`**
 Into the ` config > setting.py` and to the ` DATABASE ` section, set the database config like this format:
@@ -33,21 +24,16 @@ Into the ` config > setting.py` and to the ` DATABASE ` section, set the databas
 **you need to change the `<<username>>` and `<<password>>` of this section to your own information**
 
 ```python
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'Ashoori_97149068',
-        'OPTIONS': {
-        'options': '-c search_path=public'
-    },
-        'USER': '<<username>>',
-        'PASSWORD': '<<password>>',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'learn',
+        'USER': 'root',
+        'PASSWORD': '123123123',
         'HOST': 'localhost',
         'PORT': '',
     }
 }
-
 ```
 ---
 After doing above steps Django is connected to the database.
@@ -135,9 +121,9 @@ def sql_username(self, obj):
 
 ### In `admin.py` also you can see more similar example.
 
-|Full Name|Student Number|
-|---|---|
-|Mohammad Hosein Ashoori|97149068|
+| Full Name               | Student Number |
+| ----------------------- | -------------- |
+| Mohammad Hosein Ashoori | 97149068       |
 
 
 

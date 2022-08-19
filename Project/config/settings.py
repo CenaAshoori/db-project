@@ -76,12 +76,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'Ashoori_97149068',
-        'OPTIONS': {
-        'options': '-c search_path=public'
-    },
-        'USER': 'postgres',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'learn',
+        # 'OPTIONS': {
+        #     'options': '-c search_path=public'
+        # },
+        'USER': 'root',
         'PASSWORD': '123qweasd',
         'HOST': 'localhost',
         'PORT': '',
